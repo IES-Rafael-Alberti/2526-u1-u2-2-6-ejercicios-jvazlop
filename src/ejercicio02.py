@@ -28,25 +28,23 @@ def clasificar_temperatura(temperatura: float) -> tuple[str, bool]:
         - Si la temperatura está fuera del rango válido (-50 a 60), 
           devolver ("Inválida", False)
     """
-    # TODO: Implementar la función
 
     if temperatura < -50 or temperatura > 60:
         return ("Inválida", False)
-
+    
     es_extrema = temperatura < -10 or temperatura > 40
-
 
     if temperatura < 0:
         clasificacion = "Helada"
-    elif temperatura < 10:
+    elif temperatura <= 10:
         clasificacion = "Frío"
-    elif temperatura < 25:
+    elif temperatura <= 20:
         clasificacion = "Templado"
     elif temperatura < 35:
         clasificacion = "Cálido"
     else:
         clasificacion = "Caluroso"
-
+    
     return (clasificacion, es_extrema)
 
 
