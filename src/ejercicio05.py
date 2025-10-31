@@ -31,7 +31,7 @@ def convertir_segundos(segundos_totales: int) -> tuple[int, int, int, int]:
     if segundos_totales < 0:
         return (0, 0, 0, 0)
 
-    # 
+    # Segundos segun que
     diaS = 86400
     horaS = 3600
     minS = 60
