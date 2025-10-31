@@ -8,7 +8,7 @@ Descripción:
 Autor: Eduardo Fdez
 Fecha: 2025-10-25
 """
-
+import math
 
 def simular_carrera(velocidad1: int, velocidad2: int, velocidad3: int, distancia_meta: int) -> tuple[int, int]:
     """
@@ -33,9 +33,34 @@ def simular_carrera(velocidad1: int, velocidad2: int, velocidad3: int, distancia
         - Si hay empate, gana el caracol con número más bajo
         - Todos los caracoles avanzan simultáneamente cada turno
     """
-    # TODO: Implementar la función
-    return (0, 0)
 
+    if not(1 <= velocidad1 and velocidad1 <= 10 and 1 <= velocidad2 and velocidad2 <= 10 and 1 <= velocidad3 and velocidad3 <= 10):
+        return (0, 0)
+    
+    if distancia_meta <= 0:
+        return (0, 0)
+    
+    # Uso math.ceil para que por ejemplo si la distancia/velocidad sale con decimales redonde hacia arriba sumando un turno paraque sean  enteros
+
+    turno1 = math.ceil(distancia_meta / velocidad1)
+    turno2 = math.ceil(distancia_meta / velocidad2)
+    turno3 = math.ceil(distancia_meta / velocidad3)
+
+    # Averiguo cual tarda menos
+
+    menor_turnos = min(turno1, turno2, turno3)
+
+    if turno1 == menor_turnos:
+        ganador = 1
+
+    elif turno2 == menor_turnos:
+        ganador = 2
+
+    else:
+        ganador = 3
+    
+    return (ganador, menor_turnos)
+    
 
 def solicitar_velocidades() -> tuple[int, int, int]:
     """
